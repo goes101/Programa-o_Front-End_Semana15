@@ -1,0 +1,64 @@
+/* Reset básico para o layout funcionar sem erros */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Layout em telas grandes (2 colunas) */
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* Menu estreito | Conteúdo largo */
+    grid-template-rows: auto 1fr auto; /* Header | Conteúdo | Footer */
+    grid-template-areas:
+        "header header"
+        "menu main"
+        "footer footer";
+    gap: 10px;
+    min-height: 100vh; /* Ocupa a altura toda da tela */
+}
+
+.header {
+    grid-area: header;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+.menu {
+    grid-area: menu;
+    background-color: #dcdcdc;
+    padding: 20px;
+}
+
+.main {
+    grid-area: main;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsividade: telas pequenas (até 768px) */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Uma coluna só */
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    .menu {
+        display: none; /* Esconde o menu em telas pequenas */
+    }
+}
